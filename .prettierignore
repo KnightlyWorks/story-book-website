@@ -1,0 +1,14 @@
+# Dependencies
+node_modules
+
+# Build
+dist
+dist-ssr
+*.local
+
+# Other
+.git
+.vscode
+.idea
+*.log
+package-lock.json

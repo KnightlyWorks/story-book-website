@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&family=Pixelify+Sans:wght@400..700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #4a3a30;
+  --color-dried-blood: #4a0000;
+  --color-blood-red: rgb(139, 0, 0);
+  --color-dark-purple: rgb(88, 28, 135);
+}
+
+@keyframes border-flow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+@keyframes dark-energy {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shadowPulse {
+  0% {
+    box-shadow:
+      -20px 0 30px 5px
+        color-mix(in srgb, var(--color-blood-red) 40%, transparent),
+      20px 0 30px 5px
+        color-mix(in srgb, var(--color-dark-purple) 40%, transparent);
+  }
+  25% {
+    box-shadow:
+      -10px 0 40px 10px
+        color-mix(in srgb, var(--color-blood-red) 50%, transparent),
+      10px 0 40px 10px
+        color-mix(in srgb, var(--color-dark-purple) 50%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 50px 15px color-mix(in srgb, var(--color-blood-red) 60%, transparent),
+      0 0 50px 15px
+        color-mix(in srgb, var(--color-dark-purple) 60%, transparent);
+  }
+  75% {
+    box-shadow:
+      10px 0 40px 10px
+        color-mix(in srgb, var(--color-blood-red) 50%, transparent),
+      -10px 0 40px 10px
+        color-mix(in srgb, var(--color-dark-purple) 50%, transparent);
+  }
+  100% {
+    box-shadow:
+      20px 0 30px 5px
+        color-mix(in srgb, var(--color-blood-red) 40%, transparent),
+      -20px 0 30px 5px
+        color-mix(in srgb, var(--color-dark-purple) 40%, transparent);
+  }
+}
+
+@layer base {
+  body {
+    @apply handjet;
+  }
+}
+
+@utility pixel-sans {
+  font-family: 'Pixelify Sans', sans-serif;
+}
+
+@utility handjet {
+  font-family: 'Handjet', sans-serif;
+}
+
+@utility dark-page-energy {
+  @apply relative bg-black/5 backdrop-blur-sm;
+  animation: shadowPulse 10s infinite alternate;
+
+  &::before {
+    @apply absolute -inset-0.5 z-[-1] rounded-xs content-[''];
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-blood-red) 40%, transparent),
+      color-mix(in srgb, var(--color-dark-purple) 40%, transparent),
+      color-mix(in srgb, var(--color-blood-red) 40%, transparent)
+    );
+    background-size: 200% 100%;
+    animation: border-flow 3s linear infinite;
+  }
+}
