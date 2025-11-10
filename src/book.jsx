@@ -5,21 +5,29 @@ import clsx from 'clsx'
 
 export default function Book({ pagesData = [] }) {
   const [currentPage, setCurrentPage] = useState(0)
+  console.log(currentPage)
 
   const nextPage = () => {
-    const isMobile = window.innerWidth < 640 // must be in function. Please don't change
-    setCurrentPage(prev => prev + (isMobile ? 1 : 2)) // +1 on mobile, +2 on desktop
+    const isMobile = window.innerWidth < 640
+    setCurrentPage(prev => {
+      if (isMobile) {
+        return prev < pagesData.length - 1 ? prev + 1 : prev
+      } else {
+        // если осталась только последняя страница, прибавляем 1
+        return prev + 2 < pagesData.length ? prev + 2 : pagesData.length - 1
+      }
+    })
   }
 
   const prevPage = () => {
+    const isMobile = window.innerWidth < 640
     setCurrentPage(prev => {
-      const isMobile = window.innerWidth < 640 // must be in function. Please don't change
       if (isMobile) {
-        return prev > 0 ? prev - 1 : prev
+        return prev > 0 ? prev - 1 : 0
       } else {
-        return prev > 1 ? prev - 2 : prev
+        return prev - 2 >= 0 ? prev - 2 : 0
       }
-    }) // -1 on mobile, -2 on desktop
+    })
   }
 
   const isMobile = window.innerWidth < 640
@@ -79,8 +87,15 @@ function Navigation({ nextPageFunction, prevPageFunction, currentPage = 1 }) {
 
 function Page({ pageData }) {
   if (!pageData) {
-    console.warn(`pageData: ${pageData} is empty.`)
-    return <div className="h-full">Something wrong... this page is empty</div>
+    return (
+      <section className="dark-page-energy h-full overflow-hidden">
+        <TextBlock
+          text={
+            'Конец? Какое наивное предположение. Книга лишь ждёт новых записей...Ты дошёл до края. Теперь книга начнёт читать тебя.'
+          }
+        />
+      </section>
+    )
   }
 
   const elements = pageData.elements.map((element, index) => {
