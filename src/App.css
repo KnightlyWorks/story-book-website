@@ -36,7 +36,7 @@
     box-shadow:
       -10px 0 20px 2px
         color-mix(in srgb, var(--color-ocean-blue) 15%, transparent),
-      /* Уменьшена интенсивность */ 10px 0 20px 2px
+      10px 0 20px 2px
         color-mix(in srgb, var(--color-emerald-green) 15%, transparent); /* Уменьшена интенсивность */
   }
   25% {
