@@ -2,10 +2,13 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-ink: #4a3a30;
-  --color-dried-blood: #4a0000;
-  --color-blood-red: rgb(139, 0, 0);
-  --color-dark-purple: rgb(88, 28, 135);
+  --color-ink: #1e3048;
+  --color-ocean-blue: #2980b9;
+  --color-sky-blue: #6cace4; /* Немного темнее */
+  --color-seafoam-green: #ffa79e;
+  --color-emerald-green: #27ae60;
+  --color-mint-green: #8fd196; /* Немного темнее */
+  --color-light-grey: #bdc3c7;
 }
 
 @keyframes border-flow {
@@ -17,7 +20,8 @@
   }
 }
 
-@keyframes dark-energy {
+@keyframes pleasant-flow {
+  /* Изменено имя для соответствия новой теме */
   0%,
   100% {
     background-position: 0% 50%;
@@ -27,40 +31,40 @@
   }
 }
 
-@keyframes shadowPulse {
+@keyframes clearPulse {
   0% {
     box-shadow:
-      -20px 0 30px 5px
-        color-mix(in srgb, var(--color-blood-red) 40%, transparent),
-      20px 0 30px 5px
-        color-mix(in srgb, var(--color-dark-purple) 40%, transparent);
+      -10px 0 20px 2px
+        color-mix(in srgb, var(--color-ocean-blue) 15%, transparent),
+      /* Уменьшена интенсивность */ 10px 0 20px 2px
+        color-mix(in srgb, var(--color-emerald-green) 15%, transparent); /* Уменьшена интенсивность */
   }
   25% {
     box-shadow:
-      -10px 0 40px 10px
-        color-mix(in srgb, var(--color-blood-red) 50%, transparent),
-      10px 0 40px 10px
-        color-mix(in srgb, var(--color-dark-purple) 50%, transparent);
+      -5px 0 25px 5px
+        color-mix(in srgb, var(--color-ocean-blue) 30%, transparent),
+      /* Уменьшена интенсивность */ 5px 0 25px 5px
+        color-mix(in srgb, var(--color-emerald-green) 30%, transparent); /* Уменьшена интенсивность */
   }
   50% {
     box-shadow:
-      0 0 50px 15px color-mix(in srgb, var(--color-blood-red) 60%, transparent),
-      0 0 50px 15px
-        color-mix(in srgb, var(--color-dark-purple) 60%, transparent);
+      0 0 30px 8px color-mix(in srgb, var(--color-ocean-blue) 40%, transparent),
+      /* Уменьшена интенсивность */ 0 0 30px 8px
+        color-mix(in srgb, var(--color-emerald-green) 40%, transparent); /* Уменьшена интенсивность */
   }
   75% {
     box-shadow:
-      10px 0 40px 10px
-        color-mix(in srgb, var(--color-blood-red) 50%, transparent),
-      -10px 0 40px 10px
-        color-mix(in srgb, var(--color-dark-purple) 50%, transparent);
+      5px 0 25px 5px
+        color-mix(in srgb, var(--color-ocean-blue) 30%, transparent),
+      /* Уменьшена интенсивность */ -5px 0 25px 5px
+        color-mix(in srgb, var(--color-emerald-green) 30%, transparent); /* Уменьшена интенсивность */
   }
   100% {
     box-shadow:
-      20px 0 30px 5px
-        color-mix(in srgb, var(--color-blood-red) 40%, transparent),
-      -20px 0 30px 5px
-        color-mix(in srgb, var(--color-dark-purple) 40%, transparent);
+      10px 0 20px 2px
+        color-mix(in srgb, var(--color-ocean-blue) 15%, transparent),
+      /* Уменьшена интенсивность */ -10px 0 20px 2px
+        color-mix(in srgb, var(--color-emerald-green) 15%, transparent); /* Уменьшена интенсивность */
   }
 }
 
@@ -78,17 +82,19 @@
   font-family: 'Handjet', sans-serif;
 }
 
-@utility dark-page-energy {
-  @apply relative bg-black/5 backdrop-blur-sm;
-  animation: shadowPulse 10s infinite alternate;
+@utility light-page-flow {
+  @apply relative bg-white/50 backdrop-blur-md; /* Усилена прозрачность фона и блюр */
+  animation: clearPulse 10s infinite alternate;
 
   &::before {
     @apply absolute -inset-0.5 z-[-1] rounded-xs content-[''];
     background: linear-gradient(
       90deg,
-      color-mix(in srgb, var(--color-blood-red) 40%, transparent),
-      color-mix(in srgb, var(--color-dark-purple) 40%, transparent),
-      color-mix(in srgb, var(--color-blood-red) 40%, transparent)
+      color-mix(in srgb, var(--color-ocean-blue) 30%, transparent),
+      /* Снижена интенсивность градиента */
+        color-mix(in srgb, var(--color-emerald-green) 30%, transparent),
+      /* Снижена интенсивность градиента */
+        color-mix(in srgb, var(--color-ocean-blue) 30%, transparent)
     );
     background-size: 200% 100%;
     animation: border-flow 3s linear infinite;

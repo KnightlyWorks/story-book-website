@@ -16,11 +16,11 @@ export default function App() {
   if (!data) return <div className="text-white">Загрузка...</div>
 
   return (
-    <div className="relative h-screen w-screen bg-black">
-      {/*Bloody backblur */}
-      <div className="from-ink/40 to-dried-blood/60 absolute inset-0 bg-linear-60 opacity-80 backdrop-blur-xl"></div>
+    <div className="relative bg-black">
       {/*Main table */}
-      <div className="mx-auto flex h-screen max-h-[1000px] w-full max-w-[1400px] flex-col items-center justify-center bg-[url(assets/images/main-background.png)] bg-cover bg-no-repeat">
+      <div className="relative mx-auto flex min-h-screen flex-col items-center justify-center bg-[url(assets/images/mainBackground.png)] bg-cover bg-bottom bg-no-repeat">
+        {/*Backblur effect */}
+        <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
         <Book pagesData={data.pages} />
       </div>
     </div>
