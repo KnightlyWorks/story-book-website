@@ -1,3 +1,9 @@
+# local utilities.
+context-icons.md
+scan.cjs
+/local-scripts/
+/temp/
+
 # Logs
 logs
 *.log

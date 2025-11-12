@@ -35,7 +35,7 @@ export default function Book({ pagesData = [] }) {
   return (
     <article className="relative mx-auto h-fit w-full max-w-4xl">
       {/* bg-container */}
-      <div className="relative block aspect-574/816 w-full bg-[url('assets/images/book-magic-mobile.png')] bg-contain bg-center bg-no-repeat sm:aspect-1131/816 sm:bg-[url('assets/images/book-magic.png')]">
+      <div className="relative block aspect-574/816 w-full bg-[url('/assets/images/book-magic-mobile.png')] bg-contain bg-center bg-no-repeat sm:aspect-1131/816 sm:bg-[url('/assets/images/book-magic.png')]">
         {/* pages content */}
         <div className="absolute inset-0 grid h-full gap-[3%] pt-[18%] pr-[20%] pb-[15%] pl-5 sm:grid-cols-2 sm:px-[10%] sm:pt-[8%] sm:pb-[9%]">
           {isMobile ? (
@@ -68,7 +68,7 @@ function Navigation({ nextPageFunction, prevPageFunction = 1 }) {
         aria-label="previous page"
         onClick={() => prevPageFunction()}
       >
-        <img src="assets/images/arrow.svg" alt="" />
+        <img src="/assets/images/arrow.svg" alt="" />
       </button>
 
       <button
@@ -76,7 +76,7 @@ function Navigation({ nextPageFunction, prevPageFunction = 1 }) {
         aria-label="next page"
         onClick={() => nextPageFunction()}
       >
-        <img src="assets/images/arrow.svg" alt="" />
+        <img src="/assets/images/arrow.svg" alt="" />
       </button>
     </nav>
   )
@@ -132,15 +132,17 @@ function Page({ pageData }) {
             iconType={element.props.iconType}
           />
         )
-      case 'ddivider':
+      case 'divider':
         return <Divider key={index} />
+      case 'random-dividers':
+        return <RandomDividerLine />
       default:
         return null
     }
   })
 
   return (
-    <section className="light-page-flow flex h-full flex-col gap-4 overflow-hidden md:gap-8">
+    <section className="light-page-flow flex h-full flex-col gap-10 overflow-hidden md:gap-15">
       {elements}
     </section>
   )
@@ -202,12 +204,6 @@ const ICON_STYLES = {
   warning: 'size-16 rounded-lg bg-sky-blue/30 p-2 animate-pulse',
 }
 
-// List of image file names for content dividers
-const DIVIDER_VARIANTS = [
-  'blood-diveder-128x128.png',
-  'ink-diveder-128x128.png',
-]
-
 // Page components
 function TextBlock({ style, text }) {
   return <p className={clsx('indent-8', TEXT_STYLES[style])}>{text}</p>
@@ -223,13 +219,13 @@ function Quote({ text, character, accentColorType = 'normal' }) {
 }
 
 function ImageTextLayout({ imagePosition = 'left', imageSrc, text }) {
+  const positions = {
+    right: 'flex-row',
+    left: 'sflex-row-reverse',
+  }
   return (
-    <section
-      className={clsx('flex flex-col gap-4 sm:flex-row', {
-        'sm:flex-row-reverse': imagePosition === 'right',
-      })}
-    >
-      <img alt="text" src={imageSrc} />
+    <section className={clsx('flex gap-4', positions.imagePosition)}>
+      <img className="max-w-30" alt="" src={imageSrc} />
       <p>{text}</p>
     </section>
   )
@@ -254,16 +250,36 @@ function IconCaptionLayout({ iconSrc, title, description, iconType = 'item' }) {
 }
 
 function Divider() {
-  const random = useMemo(
-    () => DIVIDER_VARIANTS[Math.floor(Math.random() * DIVIDER_VARIANTS.length)],
-    []
-  )
+  const DIVIDER_VARIANTS = [
+    'divider_bone.png',
+    'divider_key.png',
+    'divider_knife.png',
+    'divider_nail.png',
+    'divider_needle.png',
+    'divider_quill.png',
+    'divider_thorn.png',
+  ]
+
+  const randomDivider =
+    DIVIDER_VARIANTS[Math.floor(Math.random() * DIVIDER_VARIANTS.length)]
 
   return (
     <img
-      className="size-20 sm:size-40"
-      src={`assets/images/dividers/${random}`}
+      className="size-5 sm:size-10"
+      src={`/assets/images/dividers/${randomDivider}`}
       alt="divider"
     />
+  )
+}
+
+function RandomDividerLine() {
+  const count = Math.floor(Math.random() * 4) + 2
+
+  const dividers = Array.from({ length: count }, (_, i) => <Divider key={i} />)
+
+  return (
+    <div className="flex items-center justify-center space-x-2 py-4 sm:space-x-4">
+      {dividers}
+    </div>
   )
 }

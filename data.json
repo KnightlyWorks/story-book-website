@@ -1,224 +1,366 @@
 {
   "book_meta": {
-    "title": "Дневник Блуждающего Эха",
-    "subtitle": "или 'Как я наблюдал за идиотами в лесу'"
+    "title": "Хроники Лунного Озера",
+    "subtitle": "или «Как я наблюдаю за героями, пока они пытаются не умереть»"
   },
   "pages": [
     {
       "id": "page-001",
-      "date": "День 1. Весна.",
+      "date": "Ночь 1. Прибытие под лунным смехом.",
       "elements": [
         {
-          "layout": "text-block",
+          "layout": "image-text",
           "props": {
-            "text": "Новая группа «искателей приключений» ворвалась в мой лес. Шумные. Самоуверенные. У них есть карта, значит они эксперты. Конечно.",
-            "style": "diary"
+            "imagePosition": "left",
+            "imageSrc": "assets/images/diary/moonlake.png",
+            "text": "Новая партия «исследователей» пришла к озеру. С факелами, шумом и уверенностью тех, кто никогда не встречал настоящую тьму."
           }
         },
         {
           "layout": "quote",
           "props": {
-            "text": "«С картой мы точно не заблудимся! Я водил экспедиции и посложнее.»",
-            "character": "Рейнджер Торин"
+            "character": "Капитан Вейн",
+            "text": "«Лунный свет — наш союзник! Ничто не скроется от наших глаз!»"
           }
         },
         {
-          "layout": "text-block",
+          "layout": "icon-caption",
           "props": {
-            "text": "Карта перевёрнута вверх ногами. Я даже не буду им говорить.",
-            "style": "sass"
+            "iconSrc": "assets/images/icons/eye_open.png",
+            "iconType": "knowledge",
+            "title": "Глаз знания (закрыт)",
+            "description": "Способность видеть всё, кроме очевидного."
           }
         },
         {
-          "layout": "divider"
-        },
-        {
-          "layout": "text-block",
-          "props": {
-            "text": "К вечеру они, как и ожидалось, заблудились. Сейчас сидят у костра и спорят, куда идти дальше. Слева растёт мох — значит север. Гении.",
-            "style": "observation"
-          }
+          "layout": "random-dividers"
         }
       ]
     },
     {
       "id": "page-002",
-      "date": "День 2. Всё ещё весна.",
+      "date": "Ночь 1. Первые наблюдения.",
       "elements": [
         {
           "layout": "text-block",
           "props": {
-            "text": "Они нашли Поляну Светящихся Грибов. Я специально повесил табличку «НЕ ТРОГАТЬ». На трёх языках. С картинками.",
-            "style": "diary"
+            "style": "sass",
+            "text": "Я наблюдаю. Они разбили лагерь в трёх шагах от воды, где обитают ночные твари. Удобно — не придётся далеко ходить за закуской."
           }
         },
         {
           "layout": "text-block",
           "props": {
-            "text": "Воин Маркус, конечно же, пнул гриб ногой.",
-            "style": "observation"
+            "style": "observation",
+            "text": "Половина группы спит, вторая «стоит на страже». Охранник храпит громче всех. Тактика."
           }
         },
         {
-          "layout": "quote",
+          "layout": "icon-caption",
           "props": {
-            "text": "«Эй, смотрите! Гриб светится! Интересно, он съедобный?»",
-            "character": "Маркус, Гений Года"
+            "iconSrc": "assets/images/icons/feather.png",
+            "iconType": "travel",
+            "title": "Стратегия сна",
+            "description": "Храп как система раннего оповещения. Очень раннего."
           }
-        },
-        {
-          "layout": "text-block",
-          "props": {
-            "text": "Теперь светится сам Маркус. Зелёным. Продержится дня три. Может, научится читать за это время.",
-            "style": "sass"
-          }
-        },
-        {
-          "layout": "divider"
         }
       ]
     },
     {
       "id": "page-003",
-      "date": "День 3. Развлекаюсь.",
+      "date": "Ночь 2. Костер и тени.",
       "elements": [
         {
-          "layout": "text-block",
+          "layout": "image-text",
           "props": {
-            "text": "Маг Элара настаивает, что нашла «древний артефакт». Это моя ложка для супа. Я её потерял лет 200 назад.",
-            "style": "diary"
+            "imagePosition": "right",
+            "imageSrc": "assets/images/diary/campfire.png",
+            "text": "Разожгли костёр. Маленький, жалкий, но для моих теней — как приглашение на бал."
           }
         },
         {
           "layout": "quote",
           "props": {
-            "text": "«Чувствуете магию? Этому предмету явно тысячи лет! Возможно, это ключ к порталу!»",
-            "character": "Элара, Магистр Очевидного"
+            "character": "Лила, ученица мага",
+            "text": "«Пламя отпугнёт любых монстров! Я читала в книге!»"
           }
         },
         {
-          "layout": "text-block",
+          "layout": "icon-caption",
           "props": {
-            "text": "Жрица Изольда пытается «очистить проклятие» с ложки. Использует все свои заклинания. Ложка, как и прежде, остаётся ложкой.",
-            "style": "observation"
+            "iconSrc": "assets/images/icons/spark.png",
+            "iconType": "magic",
+            "title": "Искра надежды",
+            "description": "Единственное, что у них останется к утру."
           }
         },
         {
-          "layout": "text-block",
-          "props": {
-            "text": "Хотя теперь она блестит. Спасибо, Изольда. 200 лет не мыл.",
-            "style": "sass"
-          }
+          "layout": "random-dividers"
         }
       ]
     },
     {
       "id": "page-004",
-      "date": "День 4. Кульминация идиотизма.",
+      "date": "Ночь 2. Танцы теней.",
       "elements": [
         {
           "layout": "text-block",
           "props": {
-            "text": "Они нашли Эхо-Пещеру. Там действительно живёт дух. Спокойный старичок, любит тишину. Угадайте, что сделал Маркус?",
-            "style": "diary"
+            "style": "sass",
+            "text": "Тени уже танцуют вокруг их лагеря. Жду, когда кто-нибудь заметит. Жду... Жду..."
           }
         },
         {
-          "layout": "divider"
-        },
-        {
-          "layout": "quote",
+          "layout": "icon-caption",
           "props": {
-            "text": "«ПРИВЕЕЕТ! ЕСТЬ ТУТ КТО? ЭХООООО!»",
-            "character": "Маркус (всё ещё светится)"
-          }
-        },
-        {
-          "layout": "text-block",
-          "props": {
-            "text": "Дух выгнал их метлой. Буквально. Метла была магическая и очень настойчивая.",
-            "style": "observation"
+            "iconSrc": "assets/images/icons/heart_split.png",
+            "iconType": "emotion",
+            "title": "Уровень паники",
+            "description": "Пока что: «спокойный сон». Жду апгрейда до «лёгкой истерики»."
           }
         },
         {
           "layout": "text-block",
           "props": {
-            "text": "Сейчас они бегут через лес, преследуемые разъярённой уборочной принадлежностью. Торин кричит что-то про «тактическое отступление».",
-            "style": "sass"
+            "style": "observation",
+            "text": "Вейн только что прошептал: «Мне кажется, или эти тени двигаются?». Прогресс!"
           }
         }
       ]
     },
     {
       "id": "page-005",
-      "date": "День 5. Финал (наконец-то).",
+      "date": "Ночь 3. Грибное безумие.",
       "elements": [
         {
-          "layout": "text-block",
+          "layout": "image-text",
           "props": {
-            "text": "Группа нашла выход из леса. Измученные, в синяках от метлы, при этом уверенные в своём успехе.",
-            "style": "diary"
+            "imagePosition": "left",
+            "imageSrc": "assets/images/diary/mushroom_glow.png",
+            "text": "Нашли светящиеся грибы. Предупреждающая табличка «НЕ ЕСТЬ» была, но её использовали как дрова."
           }
         },
         {
           "layout": "quote",
           "props": {
-            "text": "«Мы прошли через древний лес и выжили! Это будет легендарная история!»",
-            "character": "Торин (карта всё ещё перевёрнута)"
+            "character": "Борк, воин-гурман",
+            "text": "«Пахнет... вкусно?»"
           }
         },
         {
-          "layout": "text-block",
+          "layout": "icon-caption",
           "props": {
-            "text": "Они унесли мою ложку. Маркус всё ещё светится. Элара написала трактат о «порталах». Изольда молится за их души.",
-            "style": "observation"
-          }
-        },
-        {
-          "layout": "divider"
-        },
-        {
-          "layout": "text-block",
-          "props": {
-            "text": "В таверне они будут рассказывать о «смертельных опасностях» и «древних артефактах». Я буду слушать через ветер и хихикать.",
-            "style": "sass"
+            "iconSrc": "assets/images/icons/bottle.png",
+            "iconType": "item",
+            "title": "Зелье просветления",
+            "description": "Теперь они видят духов. Всех сразу. И всем сразу рассказывают."
           }
         }
       ]
     },
     {
       "id": "page-006",
-      "date": "День 87. Новый сезон.",
+      "date": "Ночь 3. Философия с деревом.",
       "elements": [
         {
           "layout": "text-block",
           "props": {
-            "text": "Вижу новую группу на горизонте. У них тоже есть карта. Тоже перевёрнутая.",
-            "style": "diary"
+            "style": "sass",
+            "text": "Борк сейчас философствует с деревом о смысле жизни. Дерево молчит. Мудрое дерево."
           }
         },
         {
-          "layout": "divider"
+          "layout": "quote",
+          "props": {
+            "character": "Борк (грибной трип)",
+            "text": "«Ты понимаешь... мы все просто листья на ветру... особенно я сейчас...»"
+          }
+        },
+        {
+          "layout": "icon-caption",
+          "props": {
+            "iconSrc": "assets/images/icons/scroll.png",
+            "iconType": "knowledge",
+            "title": "Грибная мудрость",
+            "description": "Временный эффект: +100 к креативности, -1000 к логике."
+          }
+        },
+        {
+          "layout": "random-dividers"
+        }
+      ]
+    },
+    {
+      "id": "page-007",
+      "date": "Ночь 4. Лес напоминает.",
+      "elements": [
+        {
+          "layout": "image-text",
+          "props": {
+            "imagePosition": "right",
+            "imageSrc": "assets/images/diary/echo_forest.png",
+            "text": "Вошли в Эховый Лес. Место, где каждый твой шаг возвращается бумерангом глупости."
+          }
+        },
+        {
+          "layout": "quote",
+          "props": {
+            "character": "Вейн (уже не такой уверенный)",
+            "text": "«Это просто эхо! Ничего сверхъестественного!»"
+          }
+        },
+        {
+          "layout": "icon-caption",
+          "props": {
+            "iconSrc": "assets/images/icons/heart_split.png",
+            "iconType": "emotion",
+            "title": "Трещина в уверенности",
+            "description": "Появляется после третьего «заблудились-мы-или-это-шутка?»"
+          }
+        }
+      ]
+    },
+    {
+      "id": "page-008",
+      "date": "Ночь 4. Шёпот леса.",
+      "elements": [
+        {
+          "layout": "text-block",
+          "props": {
+            "style": "observation",
+            "text": "Лес шепчет им их же глупые фразы. «Ничего не случится» звучит особенно иронично в 15-м повторе."
+          }
+        },
+        {
+          "layout": "quote",
+          "props": {
+            "character": "Лила (испуганно)",
+            "text": "«Мне кажется, лес надо мной смеётся!»"
+          }
         },
         {
           "layout": "text-block",
           "props": {
-            "text": "Приключения не имеют конца. Только новых героев. И я буду записывать каждый славный момент их идиотизма.",
-            "style": "observation"
+            "style": "sass",
+            "text": "Наконец-то кто-то начал понимать! Жду, когда догадаются, что смеюсь не только лес..."
+          }
+        },
+        {
+          "layout": "random-dividers"
+        }
+      ]
+    },
+    {
+      "id": "page-009",
+      "date": "Ночь 5. Врата в никуда.",
+      "elements": [
+        {
+          "layout": "image-text",
+          "props": {
+            "imagePosition": "left",
+            "imageSrc": "assets/images/diary/ruin_gate.png",
+            "text": "Нашли древние врата. Полуразрушенные, но всё ещё работающие. Как и их надежда найти сокровища."
+          }
+        },
+        {
+          "layout": "quote",
+          "props": {
+            "character": "Лила (в экстазе)",
+            "text": "«Портал в другое измерение! Я всегда мечтала!»"
+          }
+        },
+        {
+          "layout": "icon-caption",
+          "props": {
+            "iconSrc": "assets/images/icons/scroll.png",
+            "iconType": "knowledge",
+            "title": "Свиток незнания",
+            "description": "Содержит все их ошибочные предположения в одном месте."
+          }
+        }
+      ]
+    },
+    {
+      "id": "page-010",
+      "date": "Ночь 6. Тени выходят.",
+      "elements": [
+        {
+          "layout": "image-text",
+          "props": {
+            "imagePosition": "right",
+            "imageSrc": "assets/images/events/shadow_creep.png",
+            "text": "Тени наконец представились. Герои в ужасе. Я — в восторге."
+          }
+        },
+        {
+          "layout": "quote",
+          "props": {
+            "character": "Борк (больше не философ)",
+            "text": "«МАМААА!»"
+          }
+        },
+        {
+          "layout": "random-dividers"
+        }
+      ]
+    },
+    {
+      "id": "page-011",
+      "date": "Ночь 6. Реакция команды.",
+      "elements": [
+        {
+          "layout": "icon-caption",
+          "props": {
+            "iconSrc": "assets/images/icons/spark.png",
+            "iconType": "magic",
+            "title": "Магическая паника",
+            "description": "Внезапное появление способности бегать быстрее ветра."
+          }
+        },
+        {
+          "layout": "quote",
+          "props": {
+            "character": "Лила (на бегу)",
+            "text": "«Я ТАК И ЗНАЛА, ЧТО НАДО БЫЛО УЧИТЬ ЗАКЛИНАНИЕ ТЕЛЕПОРТАЦИИ!»"
           }
         },
         {
           "layout": "text-block",
           "props": {
-            "text": "Может, на этот раз кто-то прочитает табличку?",
-            "style": "sass"
+            "style": "sass",
+            "text": "Бегут так, будто за ними гонится их же самооценка. Что, впрочем, недалеко от истины."
+          }
+        }
+      ]
+    },
+    {
+      "id": "page-012",
+      "date": "Ночь 6. Итоги экспедиции.",
+      "elements": [
+        {
+          "layout": "icon-caption",
+          "props": {
+            "iconSrc": "assets/images/icons/feather.png",
+            "iconType": "travel",
+            "title": "Перо бегства",
+            "description": "Единственный маневр, который они освоили в совершенстве."
           }
         },
         {
           "layout": "text-block",
           "props": {
-            "text": "(Спойлер: нет.)",
-            "style": "important"
+            "style": "observation",
+            "text": "Оставили всё снаряжение, включая мою любимую кружку. Теперь у меня есть сувениры."
+          }
+        },
+        {
+          "layout": "random-dividers"
+        },
+        {
+          "layout": "text-block",
+          "props": {
+            "style": "important",
+            "text": "P.S. Оставили свою карту. Перевёрнутую. Жду следующую группу."
           }
         }
       ]
