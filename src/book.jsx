@@ -37,11 +37,12 @@ export default function Book({ pagesData = [] }) {
       {/* bg-container */}
       <div className="relative block aspect-574/816 w-full bg-[url('/assets/images/book-magic-mobile.png')] bg-contain bg-center bg-no-repeat sm:aspect-1131/816 sm:bg-[url('/assets/images/book-magic.png')]">
         {/* pages content */}
-        <div className="absolute inset-0 grid h-full gap-[3%] pt-[18%] pr-[20%] pb-[15%] pl-5 sm:grid-cols-2 sm:px-[10%] sm:pt-[8%] sm:pb-[9%]">
+        <div className="absolute inset-0 grid h-full gap-[3%] pt-[18%] pr-[20%] pb-[16%] pl-5 sm:grid-cols-2 sm:px-[11%] sm:pt-[8%] sm:pb-[12%]">
           {isMobile ? (
             <Page pageData={pagesData[currentPage]} />
           ) : (
             <>
+              <div className="pointer-none: absolute z-30 aspect-574/816 w-full bg-contain bg-center bg-no-repeat active:hidden sm:aspect-1131/816 sm:bg-[url('/assets/images/book-magic-border.png')]" />
               <div className="relative flex-1 pr-4">
                 <Page pageData={pagesData[currentPage]} />
                 <NumerComponent position="left" index={currentPage} />
@@ -62,7 +63,7 @@ export default function Book({ pagesData = [] }) {
 
 function Navigation({ nextPageFunction, prevPageFunction = 1 }) {
   return (
-    <nav className="absolute bottom-4 z-20 flex h-fit w-full items-center justify-between px-6 sm:bottom-8 sm:px-10">
+    <nav className="absolute bottom-4 z-40 flex h-fit w-full items-center justify-between px-6 sm:bottom-8 sm:px-10">
       <button
         className="size-10"
         aria-label="previous page"
@@ -85,7 +86,7 @@ function Navigation({ nextPageFunction, prevPageFunction = 1 }) {
 function Page({ pageData }) {
   if (!pageData) {
     return (
-      <section className="light-page-flow h-full overflow-hidden">
+      <section className="light-page-flow overflow-hidden">
         <TextBlock
           text={
             'Конец? Какое наивное предположение. Книга лишь ждёт новых записей...Ты дошёл до края. Теперь книга начнёт читать тебя.'
@@ -142,7 +143,7 @@ function Page({ pageData }) {
   })
 
   return (
-    <section className="light-page-flow flex h-full flex-col gap-10 overflow-hidden md:gap-15">
+    <section className="light-page-flow flex h-full flex-col gap-5 overflow-hidden md:gap-10">
       {elements}
     </section>
   )
@@ -224,8 +225,8 @@ function ImageTextLayout({ imagePosition = 'left', imageSrc, text }) {
     left: 'sflex-row-reverse',
   }
   return (
-    <section className={clsx('flex gap-4', positions.imagePosition)}>
-      <img className="max-w-30" alt="" src={imageSrc} />
+    <section className={clsx('flex md:gap-4', positions.imagePosition)}>
+      <img className="max-h-12 max-w-12 basis-1/4" alt="" src={imageSrc} />
       <p>{text}</p>
     </section>
   )
