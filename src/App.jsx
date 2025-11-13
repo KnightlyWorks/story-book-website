@@ -42,17 +42,15 @@ function useAssetsLoader(imageUrls) {
 }
 
 export default function App() {
-  // ШАГ 1: Сначала грузим только гифку для лоадера
   const [gifReady, setGifReady] = useState(false)
 
   useEffect(() => {
     const gif = new Image()
     gif.onload = () => setGifReady(true)
-    gif.onerror = () => setGifReady(true) // на всякий случай
+    gif.onerror = () => setGifReady(true)
     gif.src = '/assets/images/loading.gif'
   }, [])
 
-  // ШАГ 2: Собираем все остальные картинки
   const allImages = [
     '/assets/images/mainBackground.png',
     ...bookData.pages.flatMap(page =>
@@ -70,15 +68,13 @@ export default function App() {
     ),
   ]
 
-  // ШАГ 3: Грузим их через хук
   const { loading, progress } = useAssetsLoader(allImages)
 
-  // ШАГ 4: Показываем лоадер пока гифка грузится ИЛИ пока грузятся картинки
   const showLoader = !gifReady || loading
 
   return (
     <>
-      {/* ЛОАДЕР */}
+      {/* loader */}
       <div
         className={`fixed inset-0 z-50 flex min-h-screen items-center justify-center bg-black transition-opacity duration-500 ${
           showLoader ? 'opacity-100' : 'pointer-events-none opacity-0'
@@ -95,7 +91,7 @@ export default function App() {
         )}
       </div>
 
-      {/* КОНТЕНТ */}
+      {/* content */}
       <div
         className={`relative bg-black transition-opacity duration-500 ${
           showLoader ? 'opacity-0' : 'opacity-100'

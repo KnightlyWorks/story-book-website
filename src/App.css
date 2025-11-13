@@ -1,14 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&family=Pixelify+Sans:wght@400..700&display=swap');
 @import 'tailwindcss';
 
+@custom-variant hocus (&:hover, &:focus);
+
 @theme {
   --color-ink: #1e3048;
   --color-ocean-blue: #2980b9;
-  --color-sky-blue: #6cace4; /* Немного темнее */
+  --color-sky-blue: #6cace4;
   --color-seafoam-green: #ffa79e;
   --color-emerald-green: #27ae60;
-  --color-mint-green: #8fd196; /* Немного темнее */
+  --color-mint-green: #8fd196;
   --color-light-grey: #bdc3c7;
+
+  --animate-scale-pulse: scale-pulse 2s ease-in-out infinite;
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+}
+
+@keyframes scale-pulse {
+  0%,
+  100% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
 }
 
 @keyframes border-flow {
@@ -21,7 +46,6 @@
 }
 
 @keyframes pleasant-flow {
-  /* Изменено имя для соответствия новой теме */
   0%,
   100% {
     background-position: 0% 50%;

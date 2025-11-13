@@ -1,6 +1,6 @@
 import './App.css'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import clsx from 'clsx'
 
 export default function Book({ pagesData = [] }) {
@@ -42,7 +42,11 @@ export default function Book({ pagesData = [] }) {
             <Page pageData={pagesData[currentPage]} />
           ) : (
             <>
-              <div className="pointer-none: absolute z-30 aspect-574/816 w-full bg-contain bg-center bg-no-repeat active:hidden sm:aspect-1131/816 sm:bg-[url('/assets/images/book-magic-border.png')]" />
+              {/* Border of book */}
+              <div
+                className="absolute z-30 aspect-574/816 w-full bg-contain bg-center bg-no-repeat sm:aspect-1131/816 sm:bg-[url('/assets/images/book-magic-border.png')]"
+                style={{ pointerEvents: 'none' }}
+              />
               <div className="relative flex-1 pr-4">
                 <Page pageData={pagesData[currentPage]} />
                 <NumerComponent position="left" index={currentPage} />
@@ -86,7 +90,7 @@ function Navigation({ nextPageFunction, prevPageFunction = 1 }) {
 function Page({ pageData }) {
   if (!pageData) {
     return (
-      <section className="light-page-flow overflow-hidden">
+      <section className="light-page-flow overflow-x-visible">
         <TextBlock
           text={
             'Конец? Какое наивное предположение. Книга лишь ждёт новых записей...Ты дошёл до края. Теперь книга начнёт читать тебя.'
@@ -143,7 +147,7 @@ function Page({ pageData }) {
   })
 
   return (
-    <section className="light-page-flow flex h-full flex-col gap-5 overflow-hidden md:gap-10">
+    <section className="light-page-flow flex h-full flex-col gap-5 md:gap-10">
       {elements}
     </section>
   )
@@ -207,43 +211,65 @@ const ICON_STYLES = {
 
 // Page components
 function TextBlock({ style, text }) {
-  return <p className={clsx('indent-8', TEXT_STYLES[style])}>{text}</p>
+  return (
+    <p
+      className={clsx(
+        'hocus:-translate-y-2 hocus:shadow-xl px-1 indent-8 transition-normal duration-200',
+        TEXT_STYLES[style]
+      )}
+    >
+      {text}
+    </p>
+  )
 }
 
 function Quote({ text, character, accentColorType = 'normal' }) {
   return (
-    <figure className={clsx('', QUOTE_STYLES[accentColorType])}>
+    <figure
+      className={clsx(
+        'm-1 rounded-sm rounded-tl-lg rounded-br-lg border px-2 py-1',
+        QUOTE_STYLES[accentColorType]
+      )}
+    >
       <blockquote>{text}</blockquote>
       <p>{character}</p>
     </figure>
   )
 }
 
-function ImageTextLayout({ imagePosition = 'left', imageSrc, text }) {
+function ImageTextLayout({ imagePosition, imageSrc, text }) {
   const positions = {
     right: 'flex-row',
-    left: 'sflex-row-reverse',
+    left: 'flex-row-reverse',
   }
   return (
     <section className={clsx('flex md:gap-4', positions.imagePosition)}>
-      <img className="max-h-12 max-w-12 basis-1/4" alt="" src={imageSrc} />
-      <p>{text}</p>
+      <img
+        className="hocus:scale-110 hocus:animate-scale-pulse elative max-h-12 max-w-12 basis-1/4 transition-normal duration-200"
+        alt=""
+        src={imageSrc}
+      />
+      <p className="hocus:shadow-xl hocus:-translate-y-1 transition-normal duration-200">
+        {text}
+      </p>
     </section>
   )
 }
 
 function IconCaptionLayout({ iconSrc, title, description, iconType = 'item' }) {
   return (
-    <div className="my-4 flex items-start gap-4">
+    <div className="group my-4 flex items-start gap-4">
       <div className={clsx('shrink-0', ICON_STYLES[iconType])}>
         <img
           src={iconSrc}
           alt={title}
-          className="h-full w-full object-contain"
+          className="group-hocus:animate-scale-pulse hocus:shadow-none h-full w-full object-contain"
         />
       </div>
       <div className="flex-1">
-        <h3 className="text-ocean-blue mb-1 text-lg font-bold">{title}</h3>
+        <h3 className="text-ocean-blue mb-1 text-lg font-bold transition-all duration-75 group-hover:text-shadow-xs">
+          {title}
+        </h3>
         <p className="text-ink text-sm opacity-80">{description}</p>
       </div>
     </div>
@@ -263,10 +289,12 @@ function Divider() {
 
   const randomDivider =
     DIVIDER_VARIANTS[Math.floor(Math.random() * DIVIDER_VARIANTS.length)]
+  const randomSeconds = Math.random() + 0.5
 
   return (
     <img
-      className="size-5 sm:size-10"
+      className="group-hocus:animate-wiggle size-5 sm:size-10"
+      style={{ animationDuration: `${randomSeconds}s` }}
       src={`/assets/images/dividers/${randomDivider}`}
       alt="divider"
     />
@@ -279,7 +307,7 @@ function RandomDividerLine() {
   const dividers = Array.from({ length: count }, (_, i) => <Divider key={i} />)
 
   return (
-    <div className="flex items-center justify-center space-x-2 py-4 sm:space-x-4">
+    <div className="group flex items-center justify-center space-x-2 py-4 sm:space-x-4">
       {dividers}
     </div>
   )
