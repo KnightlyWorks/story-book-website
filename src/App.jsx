@@ -97,8 +97,9 @@ export default function App() {
           showLoader ? 'opacity-0' : 'opacity-100'
         }`}
       >
-        <div className="relative mx-auto flex min-h-screen flex-col items-center justify-center bg-[url(/assets/images/mainBackground.png)] bg-cover bg-bottom bg-no-repeat">
+        <div className="bg-waterfall relative mx-auto flex min-h-screen flex-col items-center justify-center">
           <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+
           <Book pagesData={bookData.pages} />
         </div>
       </div>

@@ -1,8 +1,10 @@
 import './App.css'
 
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import clsx from 'clsx'
 import Page from './Page'
+
+import ThemeSwitcher from './themeSwitcher.jsx'
 
 export default function Book({ pagesData = [] }) {
   const [currentPage, setCurrentPage] = useState(0)
@@ -38,6 +40,9 @@ export default function Book({ pagesData = [] }) {
     <article className="relative mx-auto h-fit w-full max-w-4xl">
       {/* bg-container */}
       <div className="relative block aspect-574/816 w-full bg-[url('/assets/images/book-magic-mobile.png')] bg-contain bg-center bg-no-repeat sm:aspect-1131/816 sm:bg-[url('/assets/images/book-magic.png')]">
+        <div>
+          <ThemeSwitcher />
+        </div>
         {/* pages content */}
         <div className="absolute inset-0 grid h-full gap-[3%] pt-[18%] pr-[20%] pb-[16%] pl-5 sm:grid-cols-2 sm:px-[11%] sm:pt-[8%] sm:pb-[12%]">
           {isMobile ? (
@@ -89,12 +94,7 @@ function NumerComponent({ position, index }) {
   }
 
   return (
-    <span
-      className={clsx(
-        'font-lighr from-sky-blue to-mint-green absolute bg-linear-240 bg-clip-text',
-        positions[position]
-      )}
-    >
+    <span className={clsx('font-lighr absolute', positions[position])}>
       {index}
     </span>
   )

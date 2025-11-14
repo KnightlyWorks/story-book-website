@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-// animationDirection is optional
+
 export default function Page({ pageData, animationDirection }) {
   if (!pageData) {
     return (
@@ -53,7 +53,7 @@ export default function Page({ pageData, animationDirection }) {
       case 'divider':
         return <Divider key={index} />
       case 'random-dividers':
-        return <RandomDividerLine />
+        return <RandomDividerLine key={index} />
       default:
         return null
     }
@@ -66,7 +66,6 @@ export default function Page({ pageData, animationDirection }) {
       right: 'animate-fade-in-right',
     }
 
-    //If animateion don`t use. Returns animate-none
     if (!animationDirection) {
       return animationVariants.none
     }
@@ -86,45 +85,36 @@ export default function Page({ pageData, animationDirection }) {
   )
 }
 
-//pages styles
 const TEXT_STYLES = {
-  // Standard text style for general content
-  normal: 'text-ink',
+  // Normal text
+  normal: 'text-base',
 
-  // Style for diary entries (italic, blue text with a subtle shadow)
-  diary: 'text-ocean-blue italic text-shadow-ink text-shadow-2xs',
+  // Diary entries (italic, primary color)
+  diary: 'text-primary italic text-shadow-base text-shadow-2xs',
 
-  // Style for bold, attention-grabbing commentary (green with a bright shadow)
-  sass: 'text-emerald-green text-shadow-2xs text-shadow-mint-green font-bold',
+  // Sassy comments (bold, secondary accent)
+  sass: 'text-secondary text-shadow-2xs text-shadow-secondary-light font-bold',
 
-  // Style for observations (seafoam green, italic, slightly transparent, with a soft shadow)
+  // Observations (accent color, italic)
   observation:
-    'text-seafoam-green italic opacity-90 text-shadow-sm text-shadow-ink',
+    'text-accent italic opacity-90 text-shadow-xs text-shadow-sm text-shadow-base',
 
-  // Style for important notes (sky blue text, emphasized with a bright left border and padding)
-  important: 'text-sky-blue border-l-2 border-sky-blue pl-4',
+  // Important notes (light primary color)
+  important: 'text-primary-light border-l-2 border-primary-light pl-4',
 }
 
 const QUOTE_STYLES = {
-  // Standard style for quotes (defines border color)
-  normal: 'border-ink',
+  // Normal (or default)
+  normal: 'border-base',
 }
 
 const ICON_STYLES = {
-  // Style for items (medium size, rounded square, subtle seafoam green background)
-  item: 'size-16 rounded-lg bg-seafoam-green/20 p-2',
-
-  // Style for locations (larger size, rounded circle, subtle ocean blue background)
-  location: 'size-20 rounded-full bg-ocean-blue/20 p-3',
-
-  // Style for characters (large size, rounded rectangle, subtle emerald green background)
-  character: 'size-24 rounded-xl bg-emerald-green/20 p-4',
-
-  // Style for warnings (medium size, rounded square, sky blue background, with a pulse animation)
-  warning: 'size-16 rounded-lg bg-sky-blue/30 p-2 animate-pulse',
+  item: 'size-16 rounded-lg bg-accent/20 p-2',
+  location: 'size-20 rounded-full bg-primary/20 p-3',
+  character: 'size-24 rounded-xl bg-secondary/20 p-4',
+  warning: 'size-16 rounded-lg bg-primary-light/30 p-2 animate-pulse',
 }
 
-// Page components
 function TextBlock({ style, text }) {
   return (
     <p
@@ -160,7 +150,7 @@ function ImageTextLayout({ imagePosition, imageSrc, text }) {
   return (
     <section className={clsx('flex md:gap-4', positions[imagePosition])}>
       <img
-        className="hocus:scale-110 hocus:animate-scale-pulse elative max-h-12 max-w-12 basis-1/4 transition-normal duration-200"
+        className="hocus:scale-110 hocus:animate-scale-pulse relative max-h-12 max-w-12 basis-1/4 transition-normal duration-200"
         alt=""
         src={imageSrc}
       />
@@ -182,10 +172,10 @@ function IconCaptionLayout({ iconSrc, title, description, iconType = 'item' }) {
         />
       </div>
       <div className="flex-1">
-        <h3 className="text-ocean-blue mb-1 text-lg font-bold transition-all duration-75 group-hover:text-shadow-xs">
+        <h3 className="text-primary mb-1 text-lg font-bold transition-all duration-75 group-hover:text-shadow-xs">
           {title}
         </h3>
-        <p className="text-ink text-sm opacity-80">{description}</p>
+        <p className="text-base text-sm opacity-80">{description}</p>
       </div>
     </div>
   )
@@ -218,7 +208,6 @@ function Divider() {
 
 function RandomDividerLine() {
   const count = Math.floor(Math.random() * 4) + 2
-
   const dividers = Array.from({ length: count }, (_, i) => <Divider key={i} />)
 
   return (

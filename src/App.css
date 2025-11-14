@@ -4,19 +4,48 @@
 @custom-variant hocus (&:hover, &:focus);
 
 @theme {
-  --color-ink: #1e3048;
-  --color-ocean-blue: #2980b9;
-  --color-sky-blue: #6cace4;
-  --color-seafoam-green: #ffa79e;
-  --color-emerald-green: #27ae60;
-  --color-mint-green: #8fd196;
-  --color-light-grey: #bdc3c7;
+  /* DAY - Bright, fresh palette (Default) */
+  --color-base: #1b2f42; /* Darker Blue Text  */
+  --color-primary: #2980b9; /* Bright Blue */
+  --color-primary-light: #6cace4; /* Sky Blue */
+  --color-secondary: #27ae60; /* Vibrant Green */
+  --color-secondary-light: #8fd196; /* Mint */
+  --color-accent: #ff998a; /* Slightly deeper Peach/Coral */
+  --color-neutral: #bdc3c7; /* Light Gray */
+  --color-surface: #ffffff; /* White Surface */
+  --color-background: #f8f9fa; /* Very Light Background */
 
+  /* Animations */
   --animate-scale-pulse: scale-pulse 2s ease-in-out infinite;
   --animate-wiggle: wiggle 1s ease-in-out infinite;
-
   --animate-fade-in-left: fadeInLeft 0.5s ease-in-out;
   --animate-fade-in-right: fadeInRight 0.5s ease-in-out;
+}
+
+/* EVENING - Muted, warm tones */
+[data-theme='evening'] {
+  --color-base: #342111; /* Darker Brown */
+  --color-primary: #d68a3e; /* Golden Orange */
+  --color-primary-light: #e8b55f; /* Soft Amber */
+  --color-secondary: #a85751; /* Terracotta */
+  --color-secondary-light: #d4877c; /* Dusty Rose */
+  --color-accent: #e6c79c; /* Beige-Gold */
+  --color-neutral: #9a8c7a; /* Muted Beige */
+  --color-surface: #faf6f1; /* Warm White Surface */
+  --color-background: #f5efe6; /* Cream Background */
+}
+
+/* NIGHT - Dark, high-contrast palette */
+[data-theme='night'] {
+  --color-base: #636060; /* Lighter Text  */
+  --color-primary: #5dade2; /* Cool Blue */
+  --color-primary-light: #85c1e9; /* Light Blue */
+  --color-secondary: #58d68d; /* Neon Green */
+  --color-secondary-light: #7dcea0; /* Light Green */
+  --color-accent: #f4a59a; /* Brighter Coral  */
+  --color-neutral: #717d8a; /* Gray-Blue */
+  --color-surface: #1c2833; /* Dark Blue Surface */
+  --color-background: #0f1419; /* Near Black Background */
 }
 
 @keyframes scale-pulse {
@@ -87,37 +116,31 @@
 @keyframes clearPulse {
   0% {
     box-shadow:
-      -10px 0 20px 2px
-        color-mix(in srgb, var(--color-ocean-blue) 15%, transparent),
+      -10px 0 20px 2px color-mix(in srgb, var(--color-primary) 15%, transparent),
       10px 0 20px 2px
-        color-mix(in srgb, var(--color-emerald-green) 15%, transparent);
+        color-mix(in srgb, var(--color-secondary) 15%, transparent);
   }
   25% {
     box-shadow:
-      -5px 0 25px 5px
-        color-mix(in srgb, var(--color-ocean-blue) 30%, transparent),
-      /* Уменьшена интенсивность */ 5px 0 25px 5px
-        color-mix(in srgb, var(--color-emerald-green) 30%, transparent); /* Уменьшена интенсивность */
+      -5px 0 25px 5px color-mix(in srgb, var(--color-primary) 30%, transparent),
+      5px 0 25px 5px color-mix(in srgb, var(--color-secondary) 30%, transparent);
   }
   50% {
     box-shadow:
-      0 0 30px 8px color-mix(in srgb, var(--color-ocean-blue) 40%, transparent),
-      /* Уменьшена интенсивность */ 0 0 30px 8px
-        color-mix(in srgb, var(--color-emerald-green) 40%, transparent); /* Уменьшена интенсивность */
+      0 0 30px 8px color-mix(in srgb, var(--color-primary) 40%, transparent),
+      0 0 30px 8px color-mix(in srgb, var(--color-secondary) 40%, transparent);
   }
   75% {
     box-shadow:
-      5px 0 25px 5px
-        color-mix(in srgb, var(--color-ocean-blue) 30%, transparent),
-      /* Уменьшена интенсивность */ -5px 0 25px 5px
-        color-mix(in srgb, var(--color-emerald-green) 30%, transparent); /* Уменьшена интенсивность */
+      5px 0 25px 5px color-mix(in srgb, var(--color-primary) 30%, transparent),
+      -5px 0 25px 5px
+        color-mix(in srgb, var(--color-secondary) 30%, transparent);
   }
   100% {
     box-shadow:
-      10px 0 20px 2px
-        color-mix(in srgb, var(--color-ocean-blue) 15%, transparent),
-      /* Уменьшена интенсивность */ -10px 0 20px 2px
-        color-mix(in srgb, var(--color-emerald-green) 15%, transparent); /* Уменьшена интенсивность */
+      10px 0 20px 2px color-mix(in srgb, var(--color-primary) 15%, transparent),
+      -10px 0 20px 2px
+        color-mix(in srgb, var(--color-secondary) 15%, transparent);
   }
 }
 
@@ -143,11 +166,28 @@
     @apply absolute -inset-0.5 z-[-1] rounded-xs content-[''];
     background: linear-gradient(
       90deg,
-      color-mix(in srgb, var(--color-ocean-blue) 30%, transparent),
-      color-mix(in srgb, var(--color-emerald-green) 30%, transparent),
-      color-mix(in srgb, var(--color-ocean-blue) 30%, transparent)
+      color-mix(in srgb, var(--color-primary) 30%, transparent),
+      color-mix(in srgb, var(--color-secondary) 30%, transparent),
+      color-mix(in srgb, var(--color-primary) 30%, transparent)
     );
     background-size: 200% 100%;
     animation: border-flow 3s linear infinite;
   }
+}
+
+/*Background image utilities */
+
+@utility bg-waterfall {
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/mainBackground.png');
+}
+
+[data-theme='evening'] .bg-waterfall {
+  background-image: url('/assets/images/main-background-evening.png');
+}
+
+[data-theme='night'] .bg-waterfall {
+  background-image: url('/assets/images/main-background-night.png');
 }
