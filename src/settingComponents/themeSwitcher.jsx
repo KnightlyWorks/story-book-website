@@ -31,7 +31,7 @@ export default function MinimalThemeSwitcher() {
   return (
     <button
       onClick={cycleTheme}
-      className="bg-surface/90 hocus:scale-110 border-neutral/30 fixed top-4 right-4 z-50 flex size-14 items-center justify-center rounded-full border text-3xl shadow-lg backdrop-blur-md transition-all duration-200 hover:shadow-xl"
+      className="bg-surface/40 hocus:scale-110 border-neutral/30 z-50 flex size-14 items-center justify-center rounded-full border text-3xl shadow-lg backdrop-blur-md transition-all duration-200 hover:shadow-xl"
       title="Сменить тему"
     >
       <img

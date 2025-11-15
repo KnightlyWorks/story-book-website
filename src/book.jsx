@@ -3,8 +3,7 @@ import './App.css'
 import { useState } from 'react'
 import clsx from 'clsx'
 import Page from './Page'
-
-import ThemeSwitcher from './themeSwitcher.jsx'
+import SettingsMenu from './settings-menu'
 
 export default function Book({ pagesData = [] }) {
   const [currentPage, setCurrentPage] = useState(0)
@@ -41,7 +40,7 @@ export default function Book({ pagesData = [] }) {
       {/* bg-container */}
       <div className="relative block aspect-574/816 w-full bg-[url('/assets/images/book-magic-mobile.png')] bg-contain bg-center bg-no-repeat sm:aspect-1131/816 sm:bg-[url('/assets/images/book-magic.png')]">
         <div>
-          <ThemeSwitcher />
+          <SettingsMenu />
         </div>
         {/* pages content */}
         <div className="absolute inset-0 grid h-full gap-[3%] pt-[18%] pr-[20%] pb-[16%] pl-5 sm:grid-cols-2 sm:px-[11%] sm:pt-[8%] sm:pb-[12%]">
@@ -54,7 +53,7 @@ export default function Book({ pagesData = [] }) {
             <>
               {/* Border of book */}
               <div
-                className="absolute z-30 aspect-574/816 w-full bg-contain bg-center bg-no-repeat sm:aspect-1131/816 sm:bg-[url('/assets/images/book-magic-border.png')]"
+                className="hide-when-active absolute z-20 aspect-574/816 w-full bg-contain bg-center bg-no-repeat sm:aspect-1131/816 sm:bg-[url('/assets/images/book-magic-border.png')]"
                 style={{ pointerEvents: 'none' }}
               />
               <div className="relative flex-1 pr-4">
