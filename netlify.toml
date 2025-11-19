@@ -1,3 +1,14 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+[dev]
+  functions = "netlify/functions"
+  port = 9731
+
+
+[[redirects]]
+  from = "/assets/*"
+  to = "/.netlify/functions/assets/:splat"
+  status = 200
+

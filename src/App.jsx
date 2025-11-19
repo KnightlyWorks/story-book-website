@@ -1,7 +1,6 @@
 import './App.css'
 import Book from './book'
 import { useState, useEffect } from 'react'
-import bookData from '/data.json'
 
 function useAssetsLoader(imageUrls) {
   const [loading, setLoading] = useState(true)
@@ -43,6 +42,7 @@ function useAssetsLoader(imageUrls) {
 
 export default function App() {
   const [gifReady, setGifReady] = useState(false)
+  const [bookData, setBookData] = useState(null)
 
   useEffect(() => {
     const gif = new Image()
@@ -51,26 +51,38 @@ export default function App() {
     gif.src = '/assets/images/loading.gif'
   }, [])
 
-  const allImages = [
-    '/assets/images/mainBackground.png',
-    ...bookData.pages.flatMap(page =>
-      page.elements
-        .map(element => {
-          if (element.layout === 'image-text') {
-            return element.props.imageSrc
-          }
-          if (element.layout === 'icon-caption') {
-            return element.props.iconSrc
-          }
-          return null
-        })
-        .filter(Boolean)
-    ),
-  ]
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch('/.netlify/functions/get-data')
+        const data = await res.json()
+        setBookData(data)
+      } catch (err) {
+        console.error('Failed to fetch book data:', err)
+      }
+    }
+    fetchData()
+  }, [])
+
+  const allImages = bookData
+    ? [
+        '/assets/images/mainBackground.png',
+        ...bookData.pages.flatMap(page =>
+          page.elements
+            .map(element => {
+              if (element.layout === 'image-text') return element.props.imageSrc
+              if (element.layout === 'icon-caption')
+                return element.props.iconSrc
+              return null
+            })
+            .filter(Boolean)
+        ),
+      ]
+    : []
 
   const { loading, progress } = useAssetsLoader(allImages)
 
-  const showLoader = !gifReady || loading
+  const showLoader = !gifReady || loading || !bookData
 
   return (
     <>
@@ -85,24 +97,24 @@ export default function App() {
         {gifReady && (
           <div className="relative z-10 flex flex-col items-center gap-4">
             <img src="/assets/images/loading.gif" alt="Loading" />
-
             <div className="text-xl font-bold text-white">{progress}%</div>
           </div>
         )}
       </div>
 
       {/* content */}
-      <div
-        className={`relative bg-black transition-opacity duration-500 ${
-          showLoader ? 'opacity-0' : 'opacity-100'
-        }`}
-      >
-        <div className="bg-waterfall relative mx-auto flex min-h-screen flex-col items-center justify-center">
-          <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-
-          <Book pagesData={bookData.pages} />
+      {bookData && (
+        <div
+          className={`relative bg-black transition-opacity duration-500 ${
+            showLoader ? 'opacity-0' : 'opacity-100'
+          }`}
+        >
+          <div className="bg-waterfall relative mx-auto flex min-h-screen flex-col items-center justify-center">
+            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+            <Book pagesData={bookData.pages} />
+          </div>
         </div>
-      </div>
+      )}
     </>
   )
 }

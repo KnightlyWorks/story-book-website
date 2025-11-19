@@ -3,6 +3,8 @@ context-icons.md
 scan.cjs
 /local-scripts/
 /temp/
+data.json
+assets/
 
 # Logs
 logs
@@ -81,3 +83,6 @@ npm-debug.log*
 yarn-debug.log*
 .pnpm-debug.log*
 
+
+# Local Netlify folder
+.netlify
